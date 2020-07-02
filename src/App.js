@@ -1,22 +1,24 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import './App.css';
 import {FetchWeather} from './Api/FetchWeather'
 const App=()=> {
 
    const [query,setQuery] = useState('');
    const [weather, setWeather] = useState('')
+  
 
    const search = async (e) =>{
      if(e.key ==='Enter'){
        const data = await FetchWeather(query);
-      // console.log(data);
        setWeather(data)
        setQuery('');
      }
    }
 
-  return (
+return (
     <div className="main-container">
+
+       <h1 className="app-name">Simple Weather App</h1>
              <input type="text"
              className="search"
              placeholder="Type search query here"
@@ -40,8 +42,9 @@ const App=()=> {
                         <p>{weather.weather[0].description}</p>
                        </div>
                   </div>
-
             )}
+
+    
              
 
 
